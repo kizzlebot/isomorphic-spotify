@@ -1,38 +1,48 @@
-node-spotify
+isomorphic-spotify
 ============
-Extremely simple (and somewhat hackish) API library for the Spotify REST API.
+API library for the Spotify REST API.
 
 Install
 ---
-The easiest way to use node-spotify is to install it with npm: `npm install spotify`
+Install it with npm: `npm install isomorphic-spotify`
 
 API
 ---
-Currently, there's only three (useful) methods available:
+The following will return promises with response object being json
 
 ```javascript
-lookup: function({ type: 'artist OR album OR track', id: 'Spotify ID Hash' }, hollaback)
+lookup: function({ type: 'artist OR album OR track', id: 'Spotify ID Hash' })
 ```
 
 ```javascript
-search: function({ type: 'artist OR album OR track', query: 'My search query', limit: 20 }, hollaback)
+search: function({ type: 'artist OR album OR track', query: 'My search query', limit: 20 })
 ```
 
 ```javascript
-get: function(query, hollaback) -- See http://developer.spotify.com/en/metadata-api/overview/
+get: function(query) -- See http://developer.spotify.com/en/metadata-api/overview/
 ```
+
+These won't return a promise.  Setting a oauth token will make all subsequent api calls with token.
+```javascript
+setOAuth: function(token) 
+```
+
+```javascript
+getOAuth: function() 
+```
+
+
 
 Example
 -------
 ```javascript
-var spotify = require('spotify');
+var spotify = require('isomorphic-spotify');
 
-spotify.search({ type: 'track', query: 'dancing in the moonlight' }, function(err, data) {
-    if ( err ) {
-        console.log('Error occurred: ' + err);
-        return;
-    }
-
-    // Do something with 'data'
-});
+spotify.search({ type: 'track', query: 'dancing in the moonlight' })
+    .then(function(data) {
+        // ... do something with data
+    })
+    .catch(function(err){
+        // ... handle error
+    });
 ```
