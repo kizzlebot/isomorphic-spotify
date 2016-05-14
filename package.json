@@ -1,0 +1,28 @@
+{
+  "name": "isomorphic-spotify",
+  "description": "A Spotify API library for node.js and browser which fetches via isomorphic-fetch",
+  "version": "0.1.0",
+  "author": "James Choi",
+  "contributors": [
+    {
+      "name": "James Choi",
+      "email": "jchoi2012@knights.ucf.edu"
+    }
+  ],
+  "keywords": [
+    "spotify",
+    "music",
+    "web service"
+  ],
+  "main": "lib/spotify/spotify.js",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/kizzlebot/isomorphic-spotify.git"
+  },
+  "dependencies": {
+    "isomorphic-fetch": "^2.2.1"
+  },
+  "engines": {
+    "node": ">= 0.4.0"
+  }
+}
